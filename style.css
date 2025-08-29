@@ -91,4 +91,26 @@ footer {
   100% { text-shadow: none; }
 }
 
+#merch {
+  background: #111;
+  padding: 60px 20px;
+  border-top: 2px solid #ff007f;
+}
+#merch h2 {
+  color: #00ff99;
+  margin-bottom: 20px;
+}
+#merch p {
+  margin-bottom: 30px;
+  color: #ccc;
+}
+#merch iframe {
+  max-width: 100%;
+  border: 2px solid #ff007f;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #ff007f55;
+}
+
+
+
 /* Start https://www.cursors-4u.com */ * {cursor: url(https://cur.cursors-4u.net/user/use-1/use2.cur), auto !important;} /* End https://www.cursors-4u.com */
