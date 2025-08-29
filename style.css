@@ -93,7 +93,27 @@ footer {
 
 
 
+.merch-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  margin-top: 20px;
+  background: #ff007f;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+.merch-btn:hover {
+  background: #00ff99;
+  color: #111;
+  box-shadow: 0 0 15px #00ff99aa;
+}
+
+
+
 
 
 /* Start https://www.cursors-4u.com */ * {cursor: url(https://cur.cursors-4u.net/user/use-1/use2.cur), auto !important;} /* End https://www.cursors-4u.com */
+
 
