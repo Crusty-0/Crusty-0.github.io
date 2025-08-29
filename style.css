@@ -1,0 +1,94 @@
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Courier New', monospace;
+  background: #000 url('images/bigbac.jpg') repeat;
+  color: #eee;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Header */
+header {
+  background: #111;
+  padding: 20px;
+  border-bottom: 2px solid #ff007f;
+  box-shadow: 0 0 15px #ff007f44;
+}
+.logo {
+  max-height: 80px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 8px #ff007f);
+}
+nav ul { list-style: none; }
+nav ul li { display: inline; margin: 0 15px; }
+nav ul li a {
+  color: #eee;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: 0.2s;
+}
+nav ul li a:hover {
+  color: #00ff99;
+  text-shadow: 0 0 5px #00ff99;
+}
+
+/* Hero Section */
+#hero {
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+              url('images/backgroun.png') no-repeat center center/cover;
+  padding: 100px 20px;
+}
+#hero h1 {
+  font-family: 'Press Start 2P', cursive; /* retro pixel emo vibe */
+  font-size: 3em;
+  color: #ffffff;
+  text-shadow: 0 0 6px #000000, 0 0 20px #00ff99;
+  animation: glitch 2s infinite;
+}
+#hero p {
+  font-size: 1.2em;
+  color: #ccc;
+}
+
+/* Sections */
+section {
+  padding: 60px 20px;
+  border-bottom: 1px dashed #333;
+}
+h2 {
+  color: #ff5e00;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Music embeds */
+.embed iframe {
+  border: 2px solid #00ff99;
+  border-radius: 8px;
+  box-shadow: 0 0 15px #00ff99aa;
+}
+
+/* Footer */
+footer {
+  background: #111;
+  padding: 20px;
+  font-size: 0.8em;
+  color: #888;
+  border-top: 2px solid #ff2600;
+}
+
+/* Emo glitch animation */
+@keyframes glitch {
+  0% { text-shadow: 2px 0 red, -2px 0 cyan; }
+  20% { text-shadow: -2px -2px lime, 2px 2px magenta; }
+  40% { text-shadow: 2px -2px blue, -2px 2px pink; }
+  60% { text-shadow: -2px 2px red, 2px -2px yellow; }
+  80% { text-shadow: 2px 0 cyan, -2px 0 lime; }
+  100% { text-shadow: none; }
+}
+
+/* Start https://www.cursors-4u.com */ * {cursor: url(https://cur.cursors-4u.net/user/use-1/use2.cur), auto !important;} /* End https://www.cursors-4u.com */
