@@ -41,24 +41,22 @@
     </div>
   </section>
 
+  <!-- 🔥 UPDATED SHOWS SECTION -->
   <section id="shows">
     <h2>Upcoming Shows</h2>
-    <ul>
-      <li>So far: Nauntonbury Festival - 18th July |  </li>
-    </ul>
+    <div id="gigs">
+      <p>loading gigs...</p>
+    </div>
   </section>
 
-
-<section id="merch">
-  <h2>Merch</h2>
-  <p>Check out our official <strong>Tainted Dice</strong> design!</p>
-  <a href="https://taintedluckmusic.creator-spring.com/listing/tainted-dice?product=387&variation=103460" 
-     target="_blank" class="merch-btn">
-    Shop Now
-  </a>
-</section>
-
-
+  <section id="merch">
+    <h2>Merch</h2>
+    <p>Check out our official <strong>Tainted Dice</strong> design!</p>
+    <a href="https://taintedluckmusic.creator-spring.com/listing/tainted-dice?product=387&variation=103460" 
+       target="_blank" class="merch-btn">
+      Shop Now
+    </a>
+  </section>
 
   <section id="contact">
     <h2>Contact</h2>
@@ -68,11 +66,35 @@
     <p>Follow us on <a href="https://www.instagram.com/tainted.luck.music/">Instagram</a> • <a href="https://www.youtube.com/@tainted.luck.music.0">YouTube</a></p>
   </section>
 
+  <!-- 🔥 API SCRIPT -->
+  <script>
+    const artist = "Tainted Luck";
+    const appId = "f944e0747ad01f237ea53258088e0438";
+
+    fetch(`https://rest.bandsintown.com/artists/${encodeURIComponent(artist)}/events?app_id=${appId}`)
+      .then(res => res.json())
+      .then(events => {
+        const container = document.getElementById("gigs");
+
+        if (!events || events.length === 0) {
+          container.innerHTML = "<p>no gigs yet... but we’re cooking 👀</p>";
+          return;
+        }
+
+        container.innerHTML = events.map(event => `
+          <div class="gig">
+            <h3>${event.venue.name}</h3>
+            <p>${event.venue.city}, ${event.venue.country}</p>
+            <p>${new Date(event.datetime).toLocaleDateString()}</p>
+            <a href="${event.url}" target="_blank">tickets</a>
+          </div>
+        `).join("");
+      })
+      .catch(err => {
+        console.error(err);
+        document.getElementById("gigs").innerHTML = "<p>failed to load gigs 💀</p>";
+      });
+  </script>
+
 </body>
 </html>
-
-
-
-
-
-
