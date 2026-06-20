@@ -65,12 +65,7 @@ h2 {
   letter-spacing: 2px;
 }
 
-/* Music embeds */
-.embed iframe {
-  border: 2px solid #00ff99;
-  border-radius: 8px;
-  box-shadow: 0 0 15px #00ff99aa;
-}
+
 
 /* Footer */
 footer {
