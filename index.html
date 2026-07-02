@@ -23,7 +23,7 @@
 
   <section id="hero">
     <h1>TAINTED LUCK</h1>
-    <p>STATIC CHANNEL THREE OUT NOW.</p>
+    <p id="broadcast">STATIC CHANNEL THREE OUT NOW.</p>
   </section>
 
   <section id="about">
@@ -119,5 +119,30 @@
       });
   </script>
 
+
+<script>
+const API = "http://admin.taintedluck.site:4000/broadcast";
+
+async function updateBroadcast() {
+  try {
+    const res = await fetch(API);
+    const data = await res.json();
+
+    document.getElementById("broadcast").textContent =
+      data.message || "NO SIGNAL";
+  } catch (err) {
+    document.getElementById("broadcast").textContent =
+      "OFFLINE / NO SIGNAL";
+  }
+}
+
+// initial load
+updateBroadcast();
+
+// refresh every 10 seconds (live feel)
+setInterval(updateBroadcast, 10000);
+</script>
+
+  
 </body>
 </html>
