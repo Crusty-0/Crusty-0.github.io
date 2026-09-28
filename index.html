@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>the tainted of lucks</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Special+Elite&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <header>
+    <img src="images/taintedlogo.png" alt="tainted logo fr" class="logo">
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#music">Music</a></li>
+        <li><a href="#shows">Shows</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="hero">
+    <h1>TAINTED LUCK</h1>
+    <p id="broadcast">STATIC CHANNEL THREE OUT NOW.</p>
+  </section>
+
+  <section id="about">
+    <h2>about Us</h2>
+    <p><strong>myles</strong> on bass • <strong>sam</strong> on guitar • <strong>will</strong> on drums.</p>
+    <p>we’re Tainted Luck, a punk band residing in Britain.</p>
+  </section>
+
+<section id="music">
+    <h2>Our Music</h2>
+    <p>check out our super awesome spotify !!</p>
+    <div class="embed">
+      <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/artist/46TkBYgC3cTAQ6wkc6m6FY?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+  </section>
+
+<section id="shows">
+    <h2>Upcoming Shows</h2>
+    <div id="gigs">
+      <p>loading gigs...</p>
+    </div>
+  </section>
+
+<section id="tiktok">
+  <h2>TikTok</h2>
+  <p>Check out one of our latest videos.</p>
+
+  <blockquote class="tiktok-embed"
+      cite="https://www.tiktok.com/@tainted_luck/video/7614699050524216598"
+      data-video-id="7614699050524216598"
+      style="max-width: 605px;min-width: 325px;">
+    <section></section>
+  </blockquote>
+
+  <script async src="https://www.tiktok.com/embed.js"></script>
+</section>
+
+
+
+
+
+  <section id="merch">
+    <h2>Merch</h2>
+    <p>Check out our official <strong>Tainted Dice</strong> design!</p>
+    <a href="https://taintedluckmusic.creator-spring.com/listing/tainted-dice?product=387&variation=103460" 
+       target="_blank" class="merch-btn">
+      Shop Now
+    </a>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email us: <a href="mailto:sammylaw12@taintedluck.site">sammylaw12@taintedluck.site</a></p>
+    <p><a href="mailto:william@taintedluck.site">william@taintedluck.site</a></p>
+    <p><a href="mailto:myles@taintedluck.site">myles@taintedluck.site</a></p>
+    <p>
+  Follow us on
+  <a href="https://www.instagram.com/tainted.luck.music/" target="_blank">Instagram</a>
+  •
+  <a href="https://www.youtube.com/@tainted.luck.music.0" target="_blank">YouTube</a>
+  •
+  <a href="https://www.tiktok.com/@tainted_luck" target="_blank">TikTok</a>
+</p>
+  </section>
+
+  
+  <script>
+    const artist = "Tainted Luck";
+    const appId = "f944e0747ad01f237ea53258088e0438";
+
+    fetch(`https://rest.bandsintown.com/artists/${encodeURIComponent(artist)}/events?app_id=${appId}`)
+      .then(res => res.json())
+      .then(events => {
+        const container = document.getElementById("gigs");
+
+        if (!events || events.length === 0) {
+          container.innerHTML = "<p>no gigs yet... but we’re cooking 👀</p>";
+          return;
+        }
+
+        container.innerHTML = events.map(event => `
+          <div class="gig">
+            <h3>${event.venue.name}</h3>
+            <p>${event.venue.city}, ${event.venue.country}</p>
+            <p>${new Date(event.datetime).toLocaleDateString()}</p>
+            <a href="${event.url}" target="_blank">tickets</a>
+          </div>
+        `).join("");
+      })
+      .catch(err => {
+        console.error(err);
+        document.getElementById("gigs").innerHTML = "<p>failed to load gigs 💀</p>";
+      });
+  </script>
+
+
+<script>
+const API = "https://api.taintedluck.site/broadcast";
+
+async function updateBroadcast() {
+  try {
+    const res = await fetch(API);
+    const data = await res.json();
+
+    document.getElementById("broadcast").textContent =
+      data.message || "NO SIGNAL";
+  } catch (err) {
+    document.getElementById("broadcast").textContent =
+      "OFFLINE / NO SIGNAL";
+  }
+}
+
+// initial load
+updateBroadcast();
+
+// refresh every 10 seconds (live feel)
+setInterval(updateBroadcast, 10000);
+</script>
+
+  
+</body>
+</html>
